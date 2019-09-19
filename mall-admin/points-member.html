@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!-- <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" /> -->
+        <link rel="stylesheet" href="./css/font.css">
+        <link rel="stylesheet" href="./css/xadmin.css">
+        <script src="./lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./js/xadmin.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <div class="x-nav">
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <table class="layui-table layui-form">
+                                <thead>
+                                    <tr>
+                                        <th hidden="hidden">积分ID</th>
+                                        <th>等级lv</th>
+                                        <th>积分≥</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contains">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-card-body ">
+                          <div class="layui-form-item">
+                              <label for="L_level" class="layui-form-label">
+                                  <span class="x-red">*</span>等级</label>
+                              <div class="layui-input-inline">
+                                  <input type="text" id="L_level" class="layui-input">
+                              </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label for="L_points" class="layui-form-label">
+                                  <span class="x-red">*</span>积分</label>
+                              <div class="layui-input-inline">
+                                  <input type="text" id="L_points" class="layui-input">
+                              </div>
+                              <button type="button" class="layui-btn" id="addPM"><i class="layui-icon">&#xe608;</i></a></button>
+                          </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        //定义全局积分等级数组信息
+        var g_pointsMemberList = [];
+        jQuery(document).ready(function(){
+          //获取积分等级信息
+          $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/points/listPointsMember",
+            xhrFields:{withCredentials:true},
+            success: function(data){
+              if(data.status == "success"){
+                g_pointsMemberList = data.data;
+                reloadDom();
+              }else{
+                alert("获取积分等级规则信息失败，原因为"+data.data.errMsg);
+                if (data.data.errCode==20003) {
+                  window.location.href="account.html";
+                }
+              }
+            },
+            error: function(data){
+              alert("获取积分等级规则信息失败，原因为"+data.responseText);
+            }
+          });
+
+          $("#addPM").on("click",function(){
+            var memberLevel = $("#L_level").val();
+            var pointsNumbers = $("#L_points").val();
+            if (memberLevel==null||memberLevel=="") {
+              alert("等级不能为空");
+              return false;
+            }
+            if (pointsNumbers==null||pointsNumbers=="") {
+              alert("积分不能为空");
+              return false;
+            }
+            $.ajax({
+                type: "POST",
+                contentType: "application/x-www-form-urlencoded",
+                url: "http://localhost:8080/points/createPointsMember",
+                data:{
+                    "memberLevel": memberLevel,
+                    "pointsNumbers": pointsNumbers,
+                },
+                xhrFields:{withCredentials:true},
+                success: function(data){
+                    if(data.status == "success"){
+                        window.location.reload();
+                    }else{
+                        alert("积分等级规则创建失败，原因为"+data.data.errMsg);
+                    }
+                },
+                error: function(data){
+                    alert("积分等级规则创建失败，原因为"+data.responseText);
+                }
+            });
+          });
+
+        });
+
+        function reloadDom(){
+          for (var i = 0; i < g_pointsMemberList.length; i++) {
+            var pointsMemberModel = g_pointsMemberList[i];
+            var dom = "<tr><td hidden='hidden' id='pmId"+pointsMemberModel.pointsMemberId+"'>"+pointsMemberModel.pointsMemberId+"</td><td>"+pointsMemberModel.memberLevel+"</td><td><input type='text' style='width: 100px;text-align: center;' class='layui-input' id='pointsmem"+pointsMemberModel.pointsMemberId+"'></td><td><button class='layui-btn layui-btn-mini' id='modify"+pointsMemberModel.pointsMemberId+"' type='submit'><i class='layui-icon'>&#xe642;</i>修改</button></td><tr>";
+            $("#contains").append($(dom));
+          }
+          for (var i = 0; i < g_pointsMemberList.length; i++) {
+            var pointsMemberModel = g_pointsMemberList[i];
+            $("#pointsmem"+pointsMemberModel.pointsMemberId).val(pointsMemberModel.pointsNumbers);
+          }
+
+          $("#modify"+pointsMemberModel.pointsMemberId).on("click",function(){
+            var pointsMemberId = $("#pmId"+pointsMemberModel.memberLevel).text();
+            var pointsNumbers = $("#pointsmem"+pointsMemberModel.pointsMemberId).val();
+            if (pointsMemberId==null||pointsMemberId=="") {
+              alert("等级积分ID不能为空");
+              return false;
+            }
+            if (pointsNumbers==null||pointsNumbers=="") {
+              alert("积分不能为空");
+              return false;
+            }
+            $.ajax({
+                type: "POST",
+                contentType: "application/x-www-form-urlencoded",
+                url: "http://localhost:8080/points/updatePointsMember",
+                data:{
+                    "pointsMemberId": pointsMemberId,
+                    "pointsNumbers": pointsNumbers,
+                },
+                xhrFields:{withCredentials:true},
+                success: function(data){
+                    if(data.status == "success"){
+                        window.location.reload();
+                    }else{
+                        alert("积分等级规则修改失败，原因为"+data.data.errMsg);
+                    }
+                },
+                error: function(data){
+                    alert("积分等级规则修改失败，原因为"+data.responseText);
+                }
+            });
+          });
+        }
+    </script>
+</html>

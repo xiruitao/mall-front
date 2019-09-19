@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Eshop</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/components.css">
+	<link rel="stylesheet" type="text/css" href="./css/login.css">
+
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<!-- for bootstrap working -->
+	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<!-- //for bootstrap working -->
+<!-- cart -->
+	<script src="js/simpleCart.min.js"> </script>
+	<script src="js/userlogin.js"> </script>
+<!-- cart -->
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+
+</head>
+<body>
+	<!-- header-section-starts -->
+	<div class="header">
+		<div class="header-top-strip">
+			<div class="container">
+				<div class="header-top-left">
+					<ul>
+						<li><a href="personal.html" style="font-weight: bold;" id="myself">我的</a></li>
+						<li id="logoin"><a href="account.html"><span class="glyphicon glyphicon-user"> </span>登录</a></li>
+						<li id="regist"><a href="register2.html"><span class="glyphicon glyphicon-lock"> </span>注册</a></li>		
+					</ul>
+				</div>
+				<div class="header-right">
+						<div class="cart box_1">
+							<p><a href="cart.html" class="simpleCart_empty">购物车</a></p>
+						</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- header-section-ends -->
+	<div class="banner-top">
+		<div class="container">
+			<nav class="navbar navbar-default" role="navigation">
+	    <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	        </button>
+				<div class="logo">
+					<h1><a href="index.html"><span>E</span> -Shop</a></h1>
+				</div>
+	    </div>
+	    <!--/.navbar-header-->
+	
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+				<li><a href="itemofcategory.html?itemCategoryId=1">大师咖啡</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=2">小鹿茶</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=3">瑞纳冰</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=4">鲜榨果蔬</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=5">经典饮品</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=6">健康轻食</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=9">幸运小食</a></li>
+	        </ul>
+	    </div>
+	    <!--/.navbar-collapse-->
+	</nav>
+	<!--/.navbar-->
+</div>
+</div>
+
+<div class="container">
+	<div class="col-md-6 ">
+	<a href="myorder.html" style="font-size: 80px;text-decoration:none;"><</a>
+	<h3 class="form-title">订单详情</h3>
+		<div class="form-group">
+			<label class="control-label">订单号</label>
+			<label class="control-label" id="orderId"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label">用户ID</label>
+			<label class="control-label" id="userId"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label">订单价格</label>
+			<label class="control-label" id="orderPrice"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label" style="color: blue;">订单状态</label>
+			<lable class="control-label" style="color: green;" id="orderStatus"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label">产生积分数</label>
+			<lable class="control-label" id="pointsNumber"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label">收货地址ID</label>
+			<label class="control-label" id="addressId"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label">收货人姓名</label>
+			<lable class="control-label" id="recipientName"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label">联系电话</label>
+			<label class="control-label" id="recipientPhone"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label" style="font-weight: bold;">详细地址</label><br>
+			<lable class="control-label" id="addressDetail"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label">更新时间</label><br>
+			<lable class="control-label" id="createTime"/>
+		</div>
+		<div id="chooseaddress" class="form-actions">
+		</div><br>
+		<div class="form-actions">
+			选择已有地址：
+			<table id="adAdr"></table><a href="addaddress.html">添加地址</a><br><br>
+			当前选择地址ID：
+			<lable style="color: #FFA500;font-weight: bold;font-size: 18px;" class="control-label" id="adId"/>
+		</div><br>
+		<div class="form-actions">
+			<button class="btn blue" id="chaddress">选择地址</button>
+		</div>
+		<br>
+		<div class="form-actions">
+			<button class="btn blue" id="payOrder" type="submit">完成支付</button>
+		</div>
+		<br>
+		<div class="form-actions">
+			<button class="btn yellow" id="cancelOrder" type="submit">取消订单</button>
+		</div>
+		<br>
+		<div class="form-actions">
+			<button class="btn green" id="endOrder" type="submit">确认完成</button>
+		</div>
+		<br>
+		<div class="form-actions">
+			<button class="btn red" id="deleteOrder" type="submit">删除订单</button>
+		</div>
+	</div>
+	<div class="col-md-6 ">
+		<br><br><br><br><br><br><br>
+		<h4 class="form-title">订单商品</h3>
+		<div id="orderitem"></div>
+	</div>
+</div>
+<br><br>
+<script type="text/javascript">
+	function getParam(paramName) {            
+		paramValue = "", isFound = !1;         
+		if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {               
+			arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;               
+			while (i < arrSource.length && !isFound) 
+				arrSource[i].indexOf("=") > 0 && 
+				arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && 
+				(paramValue = arrSource[i].split("=")[1], isFound = !0), i++         
+		}           
+		return paramValue == "" && (paramValue = null), paramValue      
+	}
+	var g_orderVO = {};
+
+	var g_addressVO = {};
+
+	var g_orderStatus = 0;
+
+	var g_addressId = 0;
+
+	var g_addressVOList = [];
+
+	var g_orderItemVOList = [];
+	jQuery(document).ready(function(){
+		//获取订单详情
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/order/getOrder",
+			data:{
+				"orderId": getParam("orderId"),
+			},
+			xhrFields:{withCredentials:true},
+			success: function(data){
+				if(data.status == "success"){
+					g_orderVO = data.data;
+					g_orderStatus = data.data.orderStatus;
+					if (g_orderStatus==0) {
+						// $("#endOrder").attr("disabled", true);
+						// $("#deleteOrder").attr("disabled", true);
+						$("#endOrder").hide();
+						$("#deleteOrder").hide();
+					}
+					if (g_orderStatus==1) {
+						// $("#chaddress").attr("disabled", true); 
+						// $("#payOrder").attr("disabled", true); 
+						// $("#deleteOrder").attr("disabled", true);
+						$("#chaddress").hide();
+						$("#payOrder").hide();
+						$("#deleteOrder").hide();
+					}
+					if (g_orderStatus>=2) {
+						// $("#chaddress").attr("disabled", true); 
+						// $("#payOrder").attr("disabled", true); 
+						// $("#cancelOrder").attr("disabled", true); 
+						// $("#endOrder").attr("disabled", true); 
+						$("#chaddress").hide();
+						$("#payOrder").hide();
+						$("#cancelOrder").hide();
+						$("#endOrder").hide();
+					}
+					reloadDom();
+				}else{
+					alert("获取订单信息失败，原因为"+data.data.errMsg);
+				}
+			},
+			error: function(data){
+				alert("获取订单信息失败，原因为"+data.responseText);
+			}
+		});
+
+		//获取订单商品信息
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/order/getOrderItem",
+			data:{
+				"orderId": getParam("orderId"),
+			},
+			xhrFields:{withCredentials:true},
+			success: function(data){
+				if(data.status == "success"){
+					g_orderItemVOList = data.data;
+					reloadDomItem();
+				}else{
+					alert("获取订单商品信息失败，原因为"+data.data.errMsg);
+				}
+			},
+			error: function(data){
+				alert("获取订单商品信息失败，原因为"+data.responseText);
+			}
+		});
+
+		//获取用户地址
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/address/getUserAddress",
+			xhrFields:{withCredentials:true},
+			success: function(data){
+				if(data.status == "success"){
+					g_addressVOList = data.data;
+					reloadDomMyadd();
+				}else{
+					alert("获取用户地址信息失败，原因为"+data.data.errMsg);
+				}
+			},
+			error: function(data){
+				alert("获取用户地址失败，原因为"+data.responseText);
+			}
+		});
+
+		//完成支付
+		$("#payOrder").on("click",function(){
+			$.ajax({
+				type: "POST",
+				contentType: "application/x-www-form-urlencoded",
+				url: "http://localhost:8080/order/payOrder",
+				data:{
+					"orderId": getParam("orderId"),
+				},
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						alert("支付成功");
+						window.location.reload();
+					}else{
+						alert("支付失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("支付失败，原因为"+data.responseText);
+				}
+			})
+			return true;
+		});
+
+		//设置收货地址
+		$("#chaddress").on("click",function(){
+			$.ajax({
+				type: "POST",
+				contentType: "application/x-www-form-urlencoded",
+				url: "http://localhost:8080/order/setOrderAddress",
+				data:{
+					"orderId": getParam("orderId"),
+					"addressId": $("#adId").text(),
+				},
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						g_orderVO = data.data;
+						g_addressId = data.data.addressId;
+						window.location.reload();
+					}else{
+						console.log("获取信息失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("获取信息失败，原因为"+data.responseText);
+				}
+			});
+
+			// 获取收货地址详情
+			$.ajax({
+				type: "GET",
+				url: "http://localhost:8080/address/getAddress",
+				data:{
+					"addressId": g_addressId,
+				},
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						g_addressVO = data.data;
+						reloadDomAdr();
+					}else{
+						console.log("获取信息失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("获取信息失败，原因为"+data.responseText);
+				}
+			});
+		});
+
+		//确认收货
+		$("#endOrder").on("click",function(){
+			$.ajax({
+				type: "POST",
+				contentType: "application/x-www-form-urlencoded",
+				url: "http://localhost:8080/order/endOrder",
+				data:{
+					"orderId": getParam("orderId"),
+				},
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						alert("完成订单");
+						window.location.reload();
+					}else{
+						alert("订单完成失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("订单完成失败，原因为"+data.responseText);
+				}
+			})
+			return true;
+		});
+
+		//删除订单（归档）
+		$("#deleteOrder").on("click",function(){
+			$.ajax({
+				type: "POST",
+				contentType: "application/x-www-form-urlencoded",
+				url: "http://localhost:8080/order/deleteOrderUser",
+				data:{
+					"orderId": getParam("orderId"),
+				},
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						alert("订单删除成功");
+						window.location.href="myorder.html";
+					}else{
+						alert("订单删除失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("订单删除失败，原因为"+data.responseText);
+				}
+			})
+			return true;
+		})
+
+		//取消订单
+		$("#cancelOrder").on("click",function(){
+			$.ajax({
+				type: "POST",
+				contentType: "application/x-www-form-urlencoded",
+				url: "http://localhost:8080/order/cancelOrder",
+				data:{
+					"orderId": getParam("orderId"),
+				},
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						alert("取消订单成功");
+						window.location.href="myorder.html";
+					}else{
+						alert("取消订单失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("取消订单失败，原因为"+data.responseText);
+				}
+			});
+			return true;
+		});
+	});
+
+	function reloadDom(){
+		$("#orderId").text(g_orderVO.orderId);
+		$("#userId").text(g_orderVO.userId);
+		$("#orderPrice").text(g_orderVO.orderPrice);
+		$("#orderStatus").text(g_orderVO.statusName);
+		$("#pointsNumber").text(g_orderVO.pointsNumber);
+		$("#addressId").text(g_orderVO.addressId);
+		$("#recipientName").text(g_orderVO.recipientName);
+		$("#recipientPhone").text(g_orderVO.recipientPhone);
+		$("#addressDetail").text(g_orderVO.addressDetail);
+		$("#createTime").text(g_orderVO.createTime);
+
+		$("#adId").text(g_orderVO.addressId);
+	}
+
+	function reloadDomMyadd(){
+		for (var i = 0; i < g_addressVOList.length; i++) {
+			var addressVO = g_addressVOList[i];
+			var dom = "<tr data-id='"+addressVO.addressId+"' id='addrDetail"+addressVO.addressId+"'><td>"+addressVO.addressId+"</td><td>"+addressVO.recipientName+"</td><td>"+addressVO.recipientPhone+"</td><td>"+addressVO.addressDetail+"</td><td id='defAd"+addressVO.addressId+"'>"+addressVO.defaultAddress+"</td></tr>";
+			$("#adAdr").append($(dom));
+			if (addressVO.defaultAddress==1) {
+				$("#defAd"+addressVO.addressId).html("是");
+			}else{
+				$("#defAd"+addressVO.addressId).html("否");
+			}
+			$("#addrDetail"+addressVO.addressId).on("click",function(e){
+				$("#adId").text($(this).data("id"));
+			});
+		}
+	}
+
+	function reloadDomAdr(){
+		var dom = "<label class='control-label'>"+g_addressVO.recipientName+"</label><br><label class='control-label'>"+g_addressVO.recipientPhone+"</label><br><label class='control-label'>"+g_addressVO.addressDetail+"</label><br><label class='control-label' id='defAd"+g_addressVO.addressId+"'>"+g_addressVO.defaultAddress+"</label>";
+		$("#chooseaddress").append("收货地址<br>");
+		$("#chooseaddress").append($(dom));
+
+		if (g_addressVO.defaultAddress==1) {
+			$("#defAd"+g_addressVO.addressId).text("默认地址：是");
+		}else{
+			$("#defAd"+g_addressVO.addressId).text("默认地址：否");
+		}
+}
+
+	function reloadDomItem(){
+		for (var i = 0; i < g_orderItemVOList.length; i++) {
+			var orderItemVO = g_orderItemVOList[i]
+			var dom = "<img class='img-responsive' style='width:200px;height:300;' src='"+orderItemVO.itemImageUrl+"'/><div class='product liked-product simpleCart_shelfItem'><p style='color: blue;'>"+orderItemVO.itemName+"</p>---<p><span class= 'item_price' style='color: orange;'>"+orderItemVO.itemPrice+"元</p>---购买数量：<p style='color: #483D8B;'>"+orderItemVO.amount+"</p></div><br><br><div class='form-group'><label class='control-label'>评论</label><input class='form-control' style='width: 400px;height: 40px' id='comments"+orderItemVO.itemId+"'/></div><div class='form-actions'><button class='btn blue' data-id='"+orderItemVO.itemId+"' id='sendComment"+orderItemVO.itemId+"' type='submit'>发送评论</button></div><br><br>";
+
+			$("#orderitem").append($(dom));
+
+			if (g_orderStatus != 2) {
+				// $("#sendComment"+orderItemVO.itemId).attr("disabled", true); 
+				$("#sendComment"+orderItemVO.itemId).hide(); 
+			}
+
+			$("#sendComment"+orderItemVO.itemId).on("click",function(){
+				var comments = $("#comments"+$(this).data("id")).val();
+				if (comments==null||comments=="") {
+						alert("评论内容不能为空");
+						return false;
+					}
+				//发送评论
+				$.ajax({
+					type: "POST",
+					contentType: "application/x-www-form-urlencoded",
+					url: "http://localhost:8080/comment/sendComments",
+					data:{
+						"itemId": $(this).data("id"),
+						"comments": comments,
+						"orderId": getParam("orderId"),
+					},
+					xhrFields:{withCredentials:true},
+					success: function(data){
+						if(data.status == "success"){
+							alert("评论成功");
+							window.location.reload();//刷新本界面
+						}else{
+							alert("评论失败，原因为"+data.data.errMsg);
+						}
+					},
+					error: function(data){
+						alert("评论失败，原因为"+data.responseText);
+					}
+				});
+			});
+
+		}
+	}
+</script>
+
+ <!-- content-section-ends-here -->
+		<div class="footer">
+		<div class="container">
+		 <div class="footer_top">
+			<div class="span_of_4">
+				<div class="col-md-3 span1_of_4">
+					<h4>购买</h4>
+					<ul class="f_nav">
+						<li><a href="#">大师咖啡</a></li>
+						<li><a href="#">小鹿茶</a></li>
+						<li><a href="#">瑞纳冰</a></li>
+						<li><a href="#">鲜榨果蔬</a></li>
+						<li><a href="#">经典饮品</a></li>
+						<li><a href="#">健康轻食</a></li>
+						<li><a href="#">幸运小食</a></li>
+					</ul>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>帮助</h4>
+					<ul class="f_nav">
+						<li><a href="#">联系我们</a></li>
+						<li><a href="#">电话</a></li>
+						<li><a href="#">地址</a></li>
+					</ul>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>账户</h4>
+					<ul class="f_nav">
+						<li><a href="account.html">登录</a></li>
+						<li><a href="register.html">注册</a></li>
+						<li><a href="#">愿望清单</a></li>
+						<li><a href="checkout.html">购物车</a></li>
+					</ul>				
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>喜爱</h4>
+					<ul class="f_nav">
+						<li><a href="#">卡布奇瑞</a></li>
+						<li><a href="#">拿铁</a></li>
+						<li><a href="#">焦糖玛奇朵</a></li>
+						<li><a href="#">桃桃山雾乌龙茶</a></li>
+						<li><a href="#">巧克力瑞纳冰</a></li>
+					</ul>			
+				</div>
+				<div class="clearfix"></div>
+				</div>
+		  </div>
+		  <div class="cards text-center">
+				<img src="images/card.png" alt="" />
+		  </div>
+		  <div class="copyright text-center">
+				<p>© 2019 Eshop. All Rights Reserved | Changed by   <a href="http://w3layouts.com">  W3layouts</a></p>
+		  </div>
+		</div>
+		</div>
+ <script src="js/responsive-tabs.js"></script>
+    <script type="text/javascript">
+      $( '#myTab a' ).click( function ( e ) {
+        e.preventDefault();
+        $( this ).tab( 'show' );
+      } );
+
+      $( '#moreTabs a' ).click( function ( e ) {
+        e.preventDefault();
+        $( this ).tab( 'show' );
+      } );
+
+      ( function( $ ) {
+          // Test for making sure event are maintained
+          $( '.js-alert-test' ).click( function () {
+            alert( 'Button Clicked: Event was maintained' );
+          } );
+          fakewaffle.responsiveTabs( [ 'xs', 'sm' ] );
+      } )( jQuery );
+
+    </script>
+
+</body>
+</html>

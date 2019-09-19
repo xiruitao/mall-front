@@ -1,0 +1,348 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Eshop</title>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<!-- for bootstrap working -->
+	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<!-- //for bootstrap working -->
+<!-- cart -->
+	<script src="js/simpleCart.min.js"> </script>
+	<script src="js/userlogin.js"> </script>
+<!-- cart -->
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+</head>
+<body>
+	<!-- header-section-starts -->
+	<div class="header">
+		<div class="header-top-strip">
+			<div class="container">
+				<div class="header-top-left">
+					<ul>
+						<li><a href="personal.html" style="font-weight: bold;" id="myself">我的</a></li>
+						<li id="logoin"><a href="account.html"><span class="glyphicon glyphicon-user"> </span>登录</a></li>
+						<li id="regist"><a href="register2.html"><span class="glyphicon glyphicon-lock"> </span>注册</a></li>
+						<li><input style="width: 200px;" class="form-control" id="field"/></li>
+						<li><button style="background-color: white;" class="btn white" id="fuzzySearch" type="submit">搜索</button></li>
+						<li>      </li><li>      </li><li>      </li><li>      </li>
+						<li><a href="promo.html" style="color: yellow;">点击进入活动页面</a></li>
+					</ul>
+				</div>
+				<div class="header-right">
+						<div class="cart box_1">
+							<p><a href="cart.html" class="simpleCart_empty">购物车</a></p>
+							<p style="visibility:hidden;">-----</p>
+							<button style="background-color: white;" class="btn white" id="logout" type="submit"> 退出登录</button>
+						</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+
+	<!-- header-section-ends -->
+	<div class="banner-top">
+		<div class="container">
+			<nav class="navbar navbar-default" role="navigation">
+	    <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	        </button>
+				<div class="logo">
+					<h1><a href="index.html"><span>E</span> -Shop</a></h1>
+				</div>
+	    </div>
+	    <!--/.navbar-header-->
+	
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+				<li><a href="itemofcategory.html?itemCategoryId=1">大师咖啡</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=2">小鹿茶</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=3">瑞纳冰</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=4">鲜榨果蔬</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=5">经典饮品</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=6">健康轻食</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=9">幸运小食</a></li>
+	        </ul>
+	    </div>
+	    <!--/.navbar-collapse-->
+	</nav>
+	<!--/.navbar-->
+</div>
+</div>
+	<div class="banner">
+		<div class="container">
+<div class="banner-bottom">
+	<div class="banner-bottom-left">
+		<h2>l<br>u<br>c<br>k<br>i<br>n</h2>
+	</div>
+	<div class="banner-bottom-right">
+		<div  class="callbacks_container">
+			<br><br><br><br><br><br>
+					<ul class="rslides" id="slider4">
+					<li>
+								<div class="banner-info">
+									<h3>我只选我喜欢的</h3>
+									<p>小蓝杯，谁不爱</p>
+								</div>
+							</li>
+							<li>
+								<div class="banner-info">
+								   <h3>别想让我不是我</h3>
+									<p>小蓝杯，谁不爱</p>
+								</div>
+							</li>
+							<li>
+								<div class="banner-info">
+								  <h3>我自有道理</h3>
+									<p>小蓝杯，谁不爱</p>
+								</div>								
+							</li>
+						</ul>
+					</div>
+					<!--banner-->
+	  			<script src="js/responsiveslides.min.js"></script>
+				 <script>
+				    // You can also use "$(window).load(function() {"
+				    $(function () {
+				      // Slideshow 4
+				      $("#slider4").responsiveSlides({
+				        auto: true,
+				        pager:true,
+				        nav:false,
+				        speed: 500,
+				        namespace: "callbacks",
+				        before: function () {
+				          $('.events').append("<li>before event fired.</li>");
+				        },
+				        after: function () {
+				          $('.events').append("<li>after event fired.</li>");
+				        }
+				      });
+				
+				    });
+				  </script>
+	</div>
+</div>
+	</div>
+		</div>
+
+
+<!-- content-section-starts-here -->
+<!-- <div class="container">
+	<div class="main-content">
+		<div class="products-grid">
+
+			<div class="other-products">
+				<div class="container">
+					<h3 class="like text-center">人气Top</h3>        			
+					    <ul id="flexiselDemo3">
+					    </ul>
+				</div>
+		   </div>
+		</div>
+	</div>
+</div> -->
+<br><br>
+<div class="container">
+	<h3 class="like text-center">人气Top</h3>        			
+	    <ul id="popproduct">
+	    </ul>
+</div>
+<br><br><br><br>
+<div class="container">
+	<h3 class="like text-center">最新产品</h3>   
+	<div id="newproduct"></div>
+</div>
+
+
+<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+
+<script type="text/javascript">
+	//  $(window).load(function() {
+	// 	$("#flexiselDemo3").flexisel({
+	// 		visibleItems: 4,
+	// 		animationSpeed: 1000,
+	// 		autoPlay: true,
+	// 		autoPlaySpeed: 3000,    		
+	// 		pauseOnHover: true,
+	// 		enableResponsiveBreakpoints: true,
+	//     	responsiveBreakpoints: { 
+	//     		portrait: { 
+	//     			changePoint:480,
+	//     			visibleItems: 1
+	//     		}, 
+	//     		landscape: { 
+	//     			changePoint:640,
+	//     			visibleItems: 2
+	//     		},
+	//     		tablet: { 
+	//     			changePoint:768,
+	//     			visibleItems: 3
+	//     		}
+	//     	}
+	//     });
+	// });
+
+ 	//定义全局商品数组信息
+ 	var g_itemList = [];
+	var g_itemList2 = [];
+	jQuery(document).ready(function(){
+		$("#logout").on("click",function(){
+			$.ajax({
+				type: "GET",
+				url: "http://localhost:8080/user/logout",
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						window.location.href="account.html";
+					}else{
+						alert("退出登录失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("退出登录失败，原因为"+data.responseText);
+				}
+			});
+		})
+
+
+		$("#fuzzySearch").on("click",function(){
+			var t = encodeURI(encodeURI($("#field").val()));  
+			window.location.href="searchall.html?field="+t;
+		});
+		$.ajax({
+				type: "GET",
+				url: "http://localhost:8080/item/listPopItem",
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						g_itemList = data.data;
+						reloadDom();
+					}else{
+						alert("获取商品信息失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("获取商品信息失败，原因为"+data.responseText);
+				}
+			});
+
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/item/listNewItem",
+			xhrFields:{withCredentials:true},
+			success: function(data){
+				if(data.status == "success"){
+					g_itemList2 = data.data;
+					reloadDom2();
+				}else{
+					alert("获取商品信息失败，原因为"+data.data.errMsg);
+				}
+			},
+			error: function(data){
+				alert("获取商品信息失败，原因为"+data.responseText);
+			}
+		});
+	});
+	function reloadDom2(){
+		for(var i=0;i<g_itemList2.length;i++){
+			var itemVO = g_itemList2[i];
+			var dom = "<div data-id='"+itemVO.itemId+"' id='itemDetail"+itemVO.itemId+"' class='col-md-2 product simpleCart_shelfItem text-center'><img class='img-responsive' style='width:180px;height:180px;' src='"+itemVO.itemImageUrl+"'/><div class='product liked-product simpleCart_shelfItem'><p>"+itemVO.itemName+"</p><p><span class= 'item_price'>"+itemVO.itemPrice+"</p></div>"
+			$("#newproduct").append($(dom));
+			$("#itemDetail"+itemVO.itemId).on("click",function(e){
+				window.location.href="single.html?itemId="+$(this).data("id");
+			});
+		}
+	}
+	function reloadDom(){
+			for(var i=0;i<g_itemList.length;i++){
+				var itemVO = g_itemList[i];
+				var dom = "<div data-id='"+itemVO.itemId+"' id='itemDetail2"+itemVO.itemId+"' class='col-md-2 product simpleCart_shelfItem text-center'><img class='img-responsive' style='width:180px;height:180px' src='"+itemVO.itemImageUrl+"'/><div class='product liked-product simpleCart_shelfItem'><p>"+itemVO.itemName+"</p><p><span class= 'item_price'>"+itemVO.itemPrice+"</p></div>"
+				$("#popproduct").append($(dom));
+				$("#itemDetail2"+itemVO.itemId).on("click",function(e){
+					window.location.href="single.html?itemId="+$(this).data("id");
+				});
+			}
+		}
+ </script>
+				
+<!-- content-section-ends-here -->
+<div class="footer">
+<div class="container">
+ <div class="footer_top">
+	<div class="span_of_4">
+		<div class="col-md-3 span1_of_4">
+			<h4>购买</h4>
+			<ul class="f_nav">
+				<li><a href="#">大师咖啡</a></li>
+				<li><a href="#">小鹿茶</a></li>
+				<li><a href="#">瑞纳冰</a></li>
+				<li><a href="#">鲜榨果蔬</a></li>
+				<li><a href="#">经典饮品</a></li>
+				<li><a href="#">健康轻食</a></li>
+				<li><a href="#">幸运小食</a></li>
+			</ul>	
+		</div>
+		<div class="col-md-3 span1_of_4">
+			<h4>帮助</h4>
+			<ul class="f_nav">
+				<li><a href="#">联系我们</a></li>
+				<li><a href="#">电话</a></li>
+				<li><a href="#">地址</a></li>
+			</ul>	
+		</div>
+		<div class="col-md-3 span1_of_4">
+			<h4>账户</h4>
+			<ul class="f_nav">
+				<li><a href="account.html">登录</a></li>
+				<li><a href="register.html">注册</a></li>
+				<li><a href="#">愿望清单</a></li>
+				<li><a href="checkout.html">购物车</a></li>
+			</ul>				
+		</div>
+		<div class="col-md-3 span1_of_4">
+			<h4>喜爱</h4>
+			<ul class="f_nav">
+				<li><a href="#">卡布奇瑞</a></li>
+				<li><a href="#">拿铁</a></li>
+				<li><a href="#">焦糖玛奇朵</a></li>
+				<li><a href="#">桃桃山雾乌龙茶</a></li>
+				<li><a href="#">巧克力瑞纳冰</a></li>
+			</ul>			
+		</div>
+		<div class="clearfix"></div>
+		</div>
+  </div>
+  <div class="cards text-center">
+		<img src="images/card.png" alt="" />
+  </div>
+  <div class="copyright text-center">
+		<p>© 2019 Eshop. All Rights Reserved | Changed by   <a href="http://w3layouts.com">  W3layouts</a></p>
+  </div>
+</div>
+</div>
+</body>
+</html>

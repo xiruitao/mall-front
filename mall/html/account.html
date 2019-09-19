@@ -1,0 +1,251 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Eshop</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/components.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<!-- for bootstrap working -->
+	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<!-- //for bootstrap working -->
+<!-- cart -->
+	<script src="js/simpleCart.min.js"> </script>
+	<script src="js/userlogin.js"> </script>
+<!-- cart -->
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+</head>
+<body>
+	<!-- header-section-starts -->
+	<div class="header">
+		<div class="header-top-strip">
+			<div class="container">
+				<div class="header-top-left">
+					<ul>
+						<li><a href="personal.html" style="font-weight: bold;" id="myself">我的</a></li>
+						<li id="logoin"><a href="account.html"><span class="glyphicon glyphicon-user"> </span>登录</a></li>
+						<li id="regist"><a href="register2.html"><span class="glyphicon glyphicon-lock"> </span>注册</a></li>			
+					</ul>
+				</div>
+				<div class="header-right">
+						<div class="cart box_1">
+							<p><a href="cart.html" class="simpleCart_empty">购物车</a></p>
+						</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- header-section-ends -->
+	<div class="inner-banner">
+		<div class="container">
+			<div class="banner-top inner-head">
+				<nav class="navbar navbar-default" role="navigation">
+	    <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	        </button>
+				<div class="logo">
+					<h1><a href="index.html"><span>E</span> -Shop</a></h1>
+				</div>
+	    </div>
+	    <!--/.navbar-header-->
+	
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+				<li><a href="itemofcategory.html?itemCategoryId=1">大师咖啡</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=2">小鹿茶</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=3">瑞纳冰</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=4">鲜榨果蔬</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=5">经典饮品</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=6">健康轻食</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=9">幸运小食</a></li>
+	        </ul>
+	    </div>
+	    <!--/.navbar-collapse-->
+	</nav>
+	<!--/.navbar-->
+</div>
+	</div>
+		</div>
+		<!-- content-section-starts -->
+<br><br><br>
+
+	<div class="container">
+		<h3 class="form-title">用户登录</h3>
+		<div class="form-group">
+			<label class="control-label">手机号</label>
+			<input style="width: 200px;" class="form-control" placeholder="手机号" type="text" name="userPhone" id="userPhone">
+		</div>
+		<div class="form-group">
+			<label class="control-label">密码</label>
+			<input style="width: 200px;" class="form-control" placeholder="密码" type="password" name="password" id="password">
+		</div>
+		<div class="form-group">
+			<input style="width: 120px;height: 30px;" placeholder="验证码" type="verificationCode" name="verificationCode" id="verificationCode">
+			<img style="width: 80px;height: 30px;" id="imgUrl" id="verifiImg" />
+		</div>
+		<div class="form-actions">
+			<button class="btn blue" id="login" type="submit">登录</button>
+			<button class="btn green" id="register" type="submit">注册</button>
+			<a style="padding-left: 25px;" href="forgetPassword.html">忘记密码</a>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			getImage();
+
+			$("verifiImg").on("click",function(){
+				getImage();
+			});
+
+			$("#register").on("click",function(){
+				getImage();
+				window.location.href="register2.html";
+			});
+
+			$("#login").on("click",function(){
+				var userPhone = $("#userPhone").val();
+				var password = $("#password").val();
+				var verificationCode = $("#verificationCode").val();
+				
+				if (userPhone==null||userPhone=="") {
+					alert("手机号不能为空");
+					return false;
+				}
+				if (password==null||password=="") {
+					alert("密码不能为空");
+					return false;
+				}
+				if (verificationCode==null||verificationCode=="") {
+					alert("验证码不能为空");
+					return false;
+				}
+				$.ajax({
+					type: "POST",
+					contentType: "application/x-www-form-urlencoded",
+					url: "http://localhost:8080/user/login",
+					data:{
+						"userPhone": $("#userPhone").val(),
+						"password": $("#password").val(),
+						"verificationCode": $("#verificationCode").val(),
+					},
+					xhrFields:{withCredentials:true},
+					success: function(data){
+						if(data.status == "success"){
+							alert("登录成功");
+							window.location.href="index.html";
+						}else{
+							alert("登录失败，原因为"+data.data.errMsg);
+						}
+					},
+					error: function(data){
+						alert("登录失败，原因为"+data.responseText);
+					}
+				})
+				return true;
+			})
+		})
+		function getImage(){
+			$.ajax({
+				type: "GET",
+				url: "http://localhost:8080/user/getImg",
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						$("#imgUrl").attr("src",data.data);
+					}else{
+						alert("获取验证码失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("获取验证码失败，原因为"+data.responseText);
+				}
+			});
+		}
+
+</script>
+
+<br><br>
+
+
+		<div class="footer">
+		<div class="container">
+		 <div class="footer_top">
+			<div class="span_of_4">
+				<div class="col-md-3 span1_of_4">
+					<h4>购买</h4>
+					<ul class="f_nav">
+						<li><a href="#">大师咖啡</a></li>
+						<li><a href="#">小鹿茶</a></li>
+						<li><a href="#">瑞纳冰</a></li>
+						<li><a href="#">鲜榨果蔬</a></li>
+						<li><a href="#">经典饮品</a></li>
+						<li><a href="#">健康轻食</a></li>
+						<li><a href="#">幸运小食</a></li>
+					</ul>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>帮助</h4>
+					<ul class="f_nav">
+						<li><a href="#">联系我们</a></li>
+						<li><a href="#">电话</a></li>
+						<li><a href="#">地址</a></li>
+					</ul>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>账户</h4>
+					<ul class="f_nav">
+						<li><a href="account.html">登录</a></li>
+						<li><a href="register.html">注册</a></li>
+						<li><a href="#">愿望清单</a></li>
+						<li><a href="checkout.html">购物车</a></li>
+					</ul>				
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>喜爱</h4>
+					<ul class="f_nav">
+						<li><a href="#">卡布奇瑞</a></li>
+						<li><a href="#">拿铁</a></li>
+						<li><a href="#">焦糖玛奇朵</a></li>
+						<li><a href="#">桃桃山雾乌龙茶</a></li>
+						<li><a href="#">巧克力瑞纳冰</a></li>
+					</ul>			
+				</div>
+				<div class="clearfix"></div>
+				</div>
+		  </div>
+		  <div class="cards text-center">
+				<img src="images/card.png" alt="" />
+		  </div>
+		  <div class="copyright text-center">
+				<p>© 2019 Eshop. All Rights Reserved | Changed by   <a href="http://w3layouts.com">  W3layouts</a></p>
+		  </div>
+		</div>
+		</div>
+</body>
+</html>

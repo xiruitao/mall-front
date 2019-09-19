@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+       <!--  <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" /> -->
+        <link rel="stylesheet" href="./css/font.css">
+        <link rel="stylesheet" href="./css/xadmin.css">
+        <link rel="stylesheet" href="./css/components.css">
+        <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <script src="./lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./js/xadmin.js"></script>
+        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+        <!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="x-nav">
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                      <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5">
+                                <div class="layui-inline layui-show-xs-block">
+                                    <button type="button" class="layui-btn" id="addpromoitem"><i class="layui-icon">&#xe608;</i>添加商品 </a></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-card-body ">
+                            <table class="layui-table layui-form">
+                              <thead>
+                                <tr>
+                                  <th>商品ID</th>
+                                  <th>商品名</th>
+                                  <th>商品类别</th>
+                                  <th>商品原价</th>
+                                  <th>活动价格</th>
+                                  <th>商品描述</th>
+                                  <th>商品图片</th>
+                                  <th>操作</th>
+                              </thead>
+                              <tbody id="contains">
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+      function getParam(paramName) {            
+          paramValue = "", isFound = !1;         
+          if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {               
+              arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;               
+              while (i < arrSource.length && !isFound) 
+                  arrSource[i].indexOf("=") > 0 && 
+                  arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && 
+                  (paramValue = arrSource[i].split("=")[1], isFound = !0), i++         
+          }           
+          return paramValue == "" && (paramValue = null), paramValue      
+      }
+      var g_promoItemVOList = [];
+      jQuery(document).ready(function(){
+        $("#addpromoitem").on("click",function(){
+          xadmin.open('添加商品','promoitem-add.html?promoId='+getParam('promoId'));
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/promo/listPromoItem",
+            data:{
+                "promoId": getParam("promoId"),
+            },
+            xhrFields:{withCredentials:true},
+            success: function(data){
+                if(data.status == "success"){
+                    g_promoItemVOList = data.data;
+                    reloadDom();
+                }else{
+                    alert("获取活动列表失败，原因为"+data.data.errMsg);
+                }
+            },
+            error: function(data){
+                alert("获取活动列表失败，原因为"+data.responseText);
+            }
+        });
+
+      });
+
+      function reloadDom(){
+        for (var i = 0; i < g_promoItemVOList.length; i++) {
+          var promoItemVO = g_promoItemVOList[i];
+          var dom = "<tr><td>"+promoItemVO.promoItemId+"</td><td>"+promoItemVO.itemName+"</td><td>"+promoItemVO.itemCategoryName+"</td><td>"+promoItemVO.itemPrice+"</td><td><input type='text' style='width: 100px;text-align: center;' class='layui-input' data-id='"+promoItemVO.promoItemId+"' id='promoPrice"+promoItemVO.promoItemId+"'></td><td>"+promoItemVO.itemDescription+"</td><td><img src='"+promoItemVO.itemImageUrl+"'/></td><td><div class='layui-btn-group'><button class='layui-btn layui-btn-danger layui-btn-mini' data-id='"+promoItemVO.promoItemId+"' id='dele"+promoItemVO.promoItemId+"' type='submit'><i class='layui-icon'>&#xe640;</i></button><button class='layui-btn layui-btn-mini' data-id='"+promoItemVO.promoItemId+"' id='edit"+promoItemVO.promoItemId+"' type='submit'><i class='layui-icon'>&#xe642;</i></button></div></td><tr>";
+          
+          $("#contains").append($(dom));
+        }
+
+        for (var i = 0; i < g_promoItemVOList.length; i++) {
+          var promoItemVO = g_promoItemVOList[i];
+          $("#promoPrice"+promoItemVO.promoItemId).val(promoItemVO.promoItemPrice);
+
+          $("#dele"+promoItemVO.promoItemId).on("click",function(e){
+            $.ajax({
+              type: "POST",
+              url: "http://localhost:8080/promo/deletePromoItem",
+              xhrFields:{withCredentials:true},
+              data:{
+                "promoItemId": $(this).data("id"),
+              },
+              success: function(data){
+                if(data.status == "success"){
+                  window.location.reload();
+                }else{
+                  alert("活动商品删除失败，原因为"+data.data.errMsg);
+                }
+              },
+              error: function(data){
+                alert("活动商品删除失败，原因为"+data.responseText);
+              }
+            });
+          });
+
+          $("#edit"+promoItemVO.promoItemId).on("click",function(e){
+            var promoPrice = $("#promoPrice"+$(this).data("id")).val();
+            if (promoPrice==null||promoPrice=="") {
+              alert("活动价格不能为空");
+              return false;
+            }
+            $.ajax({
+                type: "POST",
+                contentType: "application/x-www-form-urlencoded",
+                url: "http://localhost:8080/promo/updatePromoItem",
+                data:{
+                    "promoItemId": $(this).data("id"),
+                    "promoItemPrice": promoPrice,
+                },
+                xhrFields:{withCredentials:true},
+                success: function(data){
+                    if(data.status == "success"){
+                       alert("商品活动价格修改成功");
+                        window.location.reload();
+                    }else{
+                        alert("商品活动价格修改失败，原因为"+data.data.errMsg);
+                    }
+                },
+                error: function(data){
+                    alert("商品活动价格修改失败，原因为"+data.responseText);
+                }
+            });
+          });
+
+        }
+
+        
+
+      }
+    </script>
+</html>

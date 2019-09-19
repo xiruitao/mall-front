@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Eshop</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/components.css">
+	<link rel="stylesheet" type="text/css" href="./css/login.css">
+
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<!-- for bootstrap working -->
+	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<!-- //for bootstrap working -->
+<!-- cart -->
+	<script src="js/simpleCart.min.js"> </script>
+	<script src="js/userlogin.js"> </script>
+<!-- cart -->
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+
+</head>
+<body>
+	<!-- header-section-starts -->
+	<div class="header">
+		<div class="header-top-strip">
+			<div class="container">
+				<div class="header-top-left">
+					<ul>
+						<li><a href="personal.html" style="font-weight: bold;" id="myself">我的</a></li>
+						<li id="logoin"><a href="account.html"><span class="glyphicon glyphicon-user"> </span>登录</a></li>
+						<li id="regist"><a href="register2.html"><span class="glyphicon glyphicon-lock"> </span>注册</a></li>			
+					</ul>
+				</div>
+				<div class="header-right">
+						<div class="cart box_1">
+							<p><a href="cart.html" class="simpleCart_empty">购物车</a></p>
+							<p style="visibility:hidden;">-----</p>
+							<button style="background-color: white;" class="btn white" id="logout" type="submit"> 退出登录</button>
+						</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- header-section-ends -->
+	<div class="banner-top">
+		<div class="container">
+			<nav class="navbar navbar-default" role="navigation">
+	    <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	        </button>
+				<div class="logo">
+					<h1><a href="index.html"><span>E</span> -Shop</a></h1>
+				</div>
+	    </div>
+	    <!--/.navbar-header-->
+	
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+				<li><a href="itemofcategory.html?itemCategoryId=1">大师咖啡</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=2">小鹿茶</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=3">瑞纳冰</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=4">鲜榨果蔬</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=5">经典饮品</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=6">健康轻食</a></li>
+		        <li><a href="itemofcategory.html?itemCategoryId=9">幸运小食</a></li>
+	        </ul>
+	    </div>
+	    <!--/.navbar-collapse-->
+	</nav>
+	<!--/.navbar-->
+</div>
+</div>
+
+<div class="container">
+	<a href="personal.html" style="font-size: 80px;text-decoration:none;"><</a>
+	<h3 class="form-title">订单列表</h3>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>订单号</th>
+					<th>用户ID</th>
+					<th>订单价格</th>
+					<th>订单状态</th>
+					<th>产生积分数</th>
+					<th>更新时间</th>
+				</tr>
+			</thead>
+			<tbody id="container">
+			</tbody>
+		</table>
+	</div>
+
+	<h3 class="form-title">已完成订单列表</h3>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>订单号</th>
+					<th>用户ID</th>
+					<th>订单价格</th>
+					<th>订单状态</th>
+					<th>产生积分数</th>
+					<th>更新时间</th>
+				</tr>
+			</thead>
+			<tbody id="container3">
+			</tbody>
+		</table>
+	</div>
+
+	<h3 class="form-title">已取消订单列表</h3>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>订单号</th>
+					<th>用户ID</th>
+					<th>订单价格</th>
+					<th>订单状态</th>
+					<th>产生积分数</th>
+					<th>更新时间</th>
+				</tr>
+			</thead>
+			<tbody id="container2">
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script type="text/javascript">
+	//定义全局订单数组信息
+	var g_orderList = [];
+	var g_orderList2 = [];
+	var g_orderList3 = [];
+	jQuery(document).ready(function(){
+		$("#logout").on("click",function(){
+			$.ajax({
+				type: "GET",
+				url: "http://localhost:8080/user/logout",
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						window.location.href="account.html";
+					}else{
+						alert("退出登录失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("退出登录失败，原因为"+data.responseText);
+				}
+			});
+		})
+		
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/order/listOrderOfUser",
+			xhrFields:{withCredentials:true},
+			success: function(data){
+				if(data.status == "success"){
+					g_orderList = data.data;
+					reloadDom();
+				}else{
+					alert("获取订单信息失败，原因为"+data.data.errMsg);
+				}
+			},
+			error: function(data){
+				alert("获取订单信息失败，原因为"+data.responseText);
+			}
+		});
+
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/order/listOrderOfUserCancel",
+			xhrFields:{withCredentials:true},
+			success: function(data){
+				if(data.status == "success"){
+					g_orderList2 = data.data;
+					reloadDom2();
+				}else{
+					alert("获取订单信息失败，原因为"+data.data.errMsg);
+				}
+			},
+			error: function(data){
+				alert("获取订单信息失败，原因为"+data.responseText);
+			}
+		});
+
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/order/listEndOrderOfUser",
+			xhrFields:{withCredentials:true},
+			success: function(data){
+				if(data.status == "success"){
+					g_orderList3 = data.data;
+					reloadDom3();
+				}else{
+					alert("获取订单信息失败，原因为"+data.data.errMsg);
+				}
+			},
+			error: function(data){
+				alert("获取订单信息失败，原因为"+data.responseText);
+			}
+		});
+	});
+
+	function reloadDom(){
+		for(var i=0;i<g_orderList.length;i++){
+			var orderVO = g_orderList[i];
+			var dom = "<tr data-id='"+orderVO.orderId+"' id='orderDetail"+orderVO.orderId+"'><td>"+orderVO.orderId+"</td><td>"+orderVO.userId+"</td><td>"+orderVO.orderPrice+"</td><td>"+orderVO.statusName+"</td><td>"+orderVO.pointsNumber+"</td><td>"+orderVO.createTime+"</td></tr>"
+			$("#container").append($(dom));
+			$("#orderDetail"+orderVO.orderId).on("click",function(e){
+				window.location.href="orderdetail.html?orderId="+$(this).data("id");
+			});
+		}
+	}
+
+	function reloadDom2(){
+		for(var i=0;i<g_orderList2.length;i++){
+			var orderVO = g_orderList2[i];
+			var dom = "<tr data-id='"+orderVO.orderId+"' id='orderDetail"+orderVO.orderId+"'><td>"+orderVO.orderId+"</td><td>"+orderVO.userId+"</td><td>"+orderVO.orderPrice+"</td><td>"+orderVO.statusName+"</td><td>"+orderVO.pointsNumber+"</td><td>"+orderVO.createTime+"</td></tr>"
+			$("#container2").append($(dom));
+			$("#orderDetail"+orderVO.orderId).on("click",function(e){
+				window.location.href="orderdetail.html?orderId="+$(this).data("id");
+			});
+		}
+	}
+
+	function reloadDom3(){
+		for(var i=0;i<g_orderList3.length;i++){
+			var orderVO = g_orderList3[i];
+			var dom = "<tr data-id='"+orderVO.orderId+"' id='orderDetail"+orderVO.orderId+"'><td>"+orderVO.orderId+"</td><td>"+orderVO.userId+"</td><td>"+orderVO.orderPrice+"</td><td>"+orderVO.statusName+"</td><td>"+orderVO.pointsNumber+"</td><td>"+orderVO.createTime+"</td></tr>"
+			$("#container3").append($(dom));
+			$("#orderDetail"+orderVO.orderId).on("click",function(e){
+				window.location.href="orderdetail.html?orderId="+$(this).data("id");
+			});
+		}
+	}
+</script>
+<br><br>
+
+
+ <!-- content-section-ends-here -->
+		<div class="footer">
+		<div class="container">
+		 <div class="footer_top">
+			<div class="span_of_4">
+				<div class="col-md-3 span1_of_4">
+					<h4>购买</h4>
+					<ul class="f_nav">
+						<li><a href="#">大师咖啡</a></li>
+						<li><a href="#">小鹿茶</a></li>
+						<li><a href="#">瑞纳冰</a></li>
+						<li><a href="#">鲜榨果蔬</a></li>
+						<li><a href="#">经典饮品</a></li>
+						<li><a href="#">健康轻食</a></li>
+						<li><a href="#">幸运小食</a></li>
+					</ul>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>帮助</h4>
+					<ul class="f_nav">
+						<li><a href="#">联系我们</a></li>
+						<li><a href="#">电话</a></li>
+						<li><a href="#">地址</a></li>
+					</ul>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>账户</h4>
+					<ul class="f_nav">
+						<li><a href="account.html">登录</a></li>
+						<li><a href="register.html">注册</a></li>
+						<li><a href="#">愿望清单</a></li>
+						<li><a href="checkout.html">购物车</a></li>
+					</ul>				
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>喜爱</h4>
+					<ul class="f_nav">
+						<li><a href="#">卡布奇瑞</a></li>
+						<li><a href="#">拿铁</a></li>
+						<li><a href="#">焦糖玛奇朵</a></li>
+						<li><a href="#">桃桃山雾乌龙茶</a></li>
+						<li><a href="#">巧克力瑞纳冰</a></li>
+					</ul>			
+				</div>
+				<div class="clearfix"></div>
+				</div>
+		  </div>
+		  <div class="cards text-center">
+				<img src="images/card.png" alt="" />
+		  </div>
+		  <div class="copyright text-center">
+				<p>© 2019 Eshop. All Rights Reserved | Changed by   <a href="http://w3layouts.com">  W3layouts</a></p>
+		  </div>
+		</div>
+		</div>
+ <script src="js/responsive-tabs.js"></script>
+    <script type="text/javascript">
+      $( '#myTab a' ).click( function ( e ) {
+        e.preventDefault();
+        $( this ).tab( 'show' );
+      } );
+
+      $( '#moreTabs a' ).click( function ( e ) {
+        e.preventDefault();
+        $( this ).tab( 'show' );
+      } );
+
+      ( function( $ ) {
+          // Test for making sure event are maintained
+          $( '.js-alert-test' ).click( function () {
+            alert( 'Button Clicked: Event was maintained' );
+          } );
+          fakewaffle.responsiveTabs( [ 'xs', 'sm' ] );
+      } )( jQuery );
+
+    </script>
+
+</body>
+</html>

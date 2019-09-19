@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!-- <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" /> -->
+        <link rel="stylesheet" href="./css/font.css">
+        <link rel="stylesheet" href="./css/xadmin.css">
+        <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./js/xadmin.js"></script>
+        <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+        <!--[if lt IE 9]>
+            <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+            <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]--></head>
+    
+    <body>
+        <div class="x-nav">
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row">
+                    <div class="layui-form-item">
+                        <label for="L_itemid" class="layui-form-label">
+                            <span class="x-red">*</span>商品ID</label>
+                        <div class="layui-input-inline">
+                            <label id="L_itemid" class="layui-form-label"></label></div>
+
+                    <div class="layui-form-item">
+                        <label for="L_itemname" class="layui-form-label">
+                            <span class="x-red">*</span>商品名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="L_itemname" class="layui-input"></div>
+                    </div>
+                    
+                    <div class="layui-form-item">
+                        <label for="L_itemcate" class="layui-form-label">
+                            <span class="x-red">*</span>商品类别</label>
+                        <!-- <div class="layui-input-inline">
+                            <input type="text" id="L_itemcate" class="layui-input">
+                            <button type="button" class="layui-btn"><a style="color: white;" href="javascript:;" onclick="xadmin.open('商品类别','item-cate.html')">商品类别</a></button>
+                        </div> -->
+                        <div class="layui-inline">
+                            <div class="select1">
+                                <select id="selectCate">
+                                  <option value="">选择类别</option>
+                                  <option value="0">未分类</option>
+                                  <option value="1">大师咖啡</option>
+                                  <option value="2">小鹿茶</option>
+                                  <option value="3">瑞纳冰</option>
+                                  <option value="4">鲜榨果汁</option>
+                                  <option value="5">经典饮品</option>
+                                  <option value="6">健康轻食</option>
+                                  <option value="9">幸运小食</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+<style type="text/css">
+    .select1 {
+        background: white;/*背景色和透明度，可以设置为url地址的图片*/
+        width: 120px;/*宽度*/
+        height: 40px;/*高度*/
+        margin-top: 1px;/*上边距*/
+        margin-left: 10px;
+        font-size: 25px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .select1 select{
+        background: transparent;/*透明*/
+        border: none;
+        padding-left: 20px;
+        width: 140px;/*比上面设置的略宽*/
+        height: 100%;
+        border-radius: 10px;
+        color: black;
+        font-size: 16px;
+        font-family: "微软雅黑";
+    }
+</style>
+
+                    <div class="layui-form-item">
+                        <label for="L_itemprice" class="layui-form-label">
+                            <span class="x-red">*</span>商品单价</label>元
+                        <div class="layui-input-inline">
+                            <input type="text" id="L_itemprice" class="layui-input"></div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="L_itemsales" class="layui-form-label">
+                            <span class="x-red">*</span>商品销量</label>
+                        <div class="layui-input-inline">
+                            <label id="L_itemsales" class="layui-form-label"></label></div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="L_itemnumber" class="layui-form-label">
+                            <span class="x-red">*</span>商品库存</label>
+                        <div class="layui-input-inline">
+                            <label id="L_itemnumber" class="layui-form-label"></label></div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="L_itemdecri" class="layui-form-label">
+                            <span class="x-red">*</span>商品描述</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="L_itemdecri" class="layui-input"></div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="L_itemimg" class="layui-form-label">
+                            <span class="x-red">*</span>商品图片</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="L_itemimgurl" class="layui-input">
+                            <img style="width:200px;height:auto;" id="L_itemimg"><br><br><br>
+                            <span>选择替换图片：</span>
+                            <img style="width:200px;height:auto;" id="itemImageUrl">
+                            <form>
+                                <input type="file" id="file" name="file" accept="image/*">
+                            </form>
+                            <input type="button" id="imgUp" value="上传">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="L_repass" class="layui-form-label"></label>
+                        <button class="layui-btn" lay-submit="" lay-filter="itemmessage" id="edit">更改</button>
+                    </div>
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        function getParam(paramName) {            
+            paramValue = "", isFound = !1;         
+            if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {               
+                arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;               
+                while (i < arrSource.length && !isFound) 
+                    arrSource[i].indexOf("=") > 0 && 
+                    arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && 
+                    (paramValue = arrSource[i].split("=")[1], isFound = !0), i++         
+            }           
+            return paramValue == "" && (paramValue = null), paramValue      
+        }
+        var g_itemVO = {};
+        jQuery(document).ready(function(){
+            //获取商品详情
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/item/getItem",
+                data:{
+                    "itemId": getParam("itemId"),
+                },
+                xhrFields:{withCredentials:true},
+                success: function(data){
+                    if(data.status == "success"){
+                        g_itemVO = data.data;
+                        reloadDom();
+                    }else{
+                        alert("获取商品信息失败，原因为"+data.data.errMsg);
+                    }
+                },
+                error: function(data){
+                    alert("获取商品信息失败，原因为"+data.responseText);
+                }
+            });
+
+            //修改商品信息
+            $("#edit").on("click",function(){
+                var itemName = $("#L_itemname").val();
+                var itemCategoryId = $("#selectCate option:selected").val();
+                var itemPrice = $("#L_itemprice").val();
+                var itemDescription = $("#L_itemdecri").val();
+                var itemImageUrl = $("#L_itemimgurl").val();
+                if (itemName==null||itemName=="") {
+                    alert("商品名称不能为空");
+                }
+                if (itemCategoryId==null||itemCategoryId=="") {
+                    alert("商品类别ID不能为空");
+                }
+                if (itemPrice==null||itemPrice=="") {
+                    alert("商品价格不能为空");
+                }
+                if (itemDescription==null||itemDescription=="") {
+                    alert("商品描述不能为空");
+                }
+                if (itemImageUrl==null||itemImageUrl=="") {
+                    alert("商品图片url不能为空");
+                }
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/x-www-form-urlencoded",
+                    url: "http://localhost:8080/item/modifyItem",
+                    data:{
+                        "itemId": getParam("itemId"),
+                        "itemName": itemName,
+                        "itemCategoryId": itemCategoryId,
+                        "itemPrice": itemPrice,
+                        "itemDescription": itemDescription,
+                        "itemImageUrl": itemImageUrl,
+                    },
+                    xhrFields:{withCredentials:true},
+                    success: function(data){
+                        if(data.status == "success"){
+                            alert("修改成功");
+                            window.location.reload();
+                        }else{
+                            alert("修改失败，原因为"+data.data.errMsg);
+                        }
+                    },
+                    error: function(data){
+                        alert("修改失败，原因为"+data.responseText);
+                    }
+                });
+            });
+
+            //图片上传
+            $("#imgUp").on("click", function(){
+                var file = $("#file")[0].files[0];
+                var formData = new FormData();
+                formData.append('file', file);
+
+                $.ajax({
+                    url: "http://localhost:8080/item/imgUp",
+                    method: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    xhrFields:{withCredentials:true},
+                    success: function(data){
+                        if(data.status == "success"){
+                            $("#itemImageUrl").attr("src",data.data);
+                            $("#L_itemimgurl").val(data.data);
+                        }else{
+                            alert("上传失败，原因为"+data.data.errMsg);
+                        }
+                    },
+                    error: function(data){
+                        alert("上传失败，原因为"+data.responseText);
+                    }
+                });
+            });
+        });
+
+        function reloadDom(){
+            $("#L_itemid").text(g_itemVO.itemId);
+            $("#L_itemname").val(g_itemVO.itemName);
+
+            // $("#L_itemcate").val(g_itemVO.itemCategoryId);
+
+            $("select option[value='"+g_itemVO.itemCategoryId+"']").attr("selected","selected"); 
+
+            $("#L_itemprice").val(g_itemVO.itemPrice);
+            $("#L_itemsales").text(g_itemVO.itemSales);
+            $("#L_itemnumber").text(g_itemVO.itemNumber);
+            $("#L_itemdecri").val(g_itemVO.itemDescription);
+            $("#L_itemimgurl").val(g_itemVO.itemImageUrl);
+            $("#L_itemimg").attr("src",g_itemVO.itemImageUrl);
+        }
+    </script>
+
+</html>

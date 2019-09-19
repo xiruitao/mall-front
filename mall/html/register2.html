@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Eshop</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/components.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body class="login">
+	<div class="content">
+		<a href="index.html" style="font-size: 25px;text-decoration:none;"><<</a>
+		<h3 class="form-title">用户注册</h3>
+		<div class="form-group">
+			<label class="control-label" for="phone">联系电话：</label>
+			<input placeholder="请输入手机号" type="text" id="phone" class="form-control">
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="code">验证码：</label>
+			<input placeholder="请输入接收的验证码" type="text" id="code" class="form-control"><br>
+			<button class="btn blue" onclick="getCode(this)" id="J_getCode">获取验证码</button>
+			<button class="btn blue" id="J_resetCode" style="display:none;"><span id="J_second">60</span>秒后重发</button>
+		</div>
+		<div class="form-group">
+			<label class="control-label">用户昵称</label>
+			<input class="form-control" placeholder="用户昵称" type="text" name="userName" id="userName">
+		</div>
+		<div class="form-group">
+			<label class="control-label">性别</label>
+			<input class="form-control" placeholder="性别" type="text" name="userSex" id="userSex">
+		</div>
+		<div class="form-group">
+			<label class="control-label">密码</label>
+			<input class="form-control" placeholder="密码" type="password" name="password" id="password">
+		</div>
+		<div class="form-actions">
+			<button class="btn blue" id="register" type="submit">提交注册</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	/*获取验证码*/
+	var isPhone = 1;
+	function getCode(e){
+		checkPhone(); //验证手机号码
+		if(isPhone){
+			resetCode(); //倒计时
+		}else{
+			$('#phone').focus();
+		}
+		
+	}
+	//验证手机号码
+	function checkPhone(){
+		var phone = $('#phone').val();
+		var pattern = /^1[0-9]{10}$/;
+		isPhone = 1;
+		if(phone == '') {
+			// alert('请输入手机号码');
+			isPhone = 0;
+			return;
+		}
+		if(!pattern.test(phone)){
+			// alert('请输入正确的手机号码');
+			isPhone = 0;
+			return;
+		}
+	}
+	//倒计时
+	function resetCode(){
+		$('#J_getCode').hide();
+		$('#J_second').html('60');
+		$('#J_resetCode').show();
+		var second = 60;
+		var timer = null;
+		timer = setInterval(function(){
+			second -= 1;
+			if(second >0 ){
+				$('#J_second').html(second);
+			}else{
+				clearInterval(timer);
+				$('#J_getCode').show();
+				$('#J_resetCode').hide();
+			}
+		},1000);
+	}
+
+	jQuery(document).ready(function(){
+		//绑定otp的click事件用于向后端发送获取手机验证码请求
+		$("#J_getCode").on("click",function(){
+			var phone = $('#phone').val();
+			var pattern = /^1[0-9]{10}$/;
+			if(phone == '') {
+				alert('请输入手机号码');
+				isPhone = 0;
+				return false;
+			}
+			if(!pattern.test(phone)){
+				alert('请输入正确的手机号码');
+				isPhone = 0;
+				return false;
+			}
+			$.ajax({
+				type: "POST",
+				contentType: "application/x-www-form-urlencoded",
+				url: "http://localhost:8080/user/getotp",
+				data:{
+					"userPhone": $("#phone").val(),
+				},
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						alert("otp已经发送到您的手机，请注意查收");
+					}else{
+						alert("otp发送失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("otp发送失败，原因为"+data.responseText);
+				}
+			})
+			return true;
+		})
+
+
+		$("#register").on("click",function(){
+			var userPhone = $("#phone").val();
+			var code = $("#code").val();
+			var userName = $("#userName").val();
+			var userSex = $("#userSex").val();
+			var password = $("#password").val();
+			
+			if (userPhone==null||userPhone=="") {
+				alert("手机号不能为空");
+				return false;
+			}
+			if (password==null||password=="") {
+				alert("密码不能为空");
+				return false;
+			}
+			if (code==null||code=="") {
+				alert("验证码不能为空");
+				return false;
+			}
+			if (userName==null||userName=="") {
+				alert("昵称不能为空");
+				return false;
+			}
+			if (userSex==null||userSex=="") {
+				alert("性别不能为空");
+				return false;
+			}
+			if (userSex=="男") {
+				userSex = 1;
+			}
+			if (userSex=="女") {
+				userSex = 0;
+			}
+
+			$.ajax({
+				type: "POST",
+				contentType: "application/x-www-form-urlencoded",
+				url: "http://localhost:8080/user/register",
+				data:{
+					"userPhone": $("#phone").val(),
+					"otpCode": $("#code").val(),
+					"userName": $("#userName").val(),
+					"userSex": userSex,
+					"password": $("#password").val(),
+				},
+				xhrFields:{withCredentials:true},
+				success: function(data){
+					if(data.status == "success"){
+						alert("注册成功");
+						window.location.href="account.html";
+					}else{
+						alert("注册失败，原因为"+data.data.errMsg);
+					}
+				},
+				error: function(data){
+					alert("注册失败，原因为"+data.responseText);
+				}
+			})
+			return true;
+		})
+	})
+</script>

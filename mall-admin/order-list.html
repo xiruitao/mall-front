@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!-- <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" /> -->
+        <link rel="stylesheet" href="./css/font.css">
+        <link rel="stylesheet" href="./css/xadmin.css">
+        <script src="./lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./js/xadmin.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">演示</a>
+                <a>
+                    <cite>导航元素</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row">
+                        <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input id="field" type="text" name="ordername" placeholder="请输入订单号/用户ID" class="layui-input"></div>
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <button id="ordersearch" type="button" class="layui-btn">
+                                        <i class="layui-icon">&#xe615;</i></button>
+                                </div>
+
+
+                                <!-- <div class="layui-input-inline layui-show-xs-block">
+                                    <input id="orderstat" type="text" name="ordername" placeholder="请输入订单状态号" class="layui-input"></div>
+                                
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <button id="orderstatsearch" type="button" class="layui-btn">
+                                        <i class="layui-icon">&#xe615;</i></button>
+                                </div> -->
+
+
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <button type="button" class="layui-btn"><a style="color: white;" href="javascript:;" onclick="xadmin.open('订单状态号对应状态','order-status.html')">订单状态号对应状态 </a></button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="layui-card-body ">
+                            <div class="layui-inline">
+                                <div class="select1">
+                                    <select id="selectOrder">
+                                      <option value="">订单状态</option>
+                                      <option value="0">待支付</option>
+                                      <option value="1">进行中</option>
+                                      <option value="2">已完成</option>
+                                      <option value="3">手动取消</option>
+                                      <option value="4">自动取消</option>
+                                      <option value="5">已删除</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <button style="border-radius: 10px;" id="orderstatsearch" type="button" class="layui-btn">查看</button>
+                            </div>
+
+                            <style type="text/css">
+                                .select1 {
+                                    background: white;/*背景色和透明度，可以设置为url地址的图片*/
+                                    width: 120px;/*宽度*/
+                                    height: 40px;/*高度*/
+                                    margin-top: 1px;/*上边距*/
+                                    margin-left: 10px;
+                                    font-size: 25px;
+                                    border-radius: 10px;
+                                    overflow: hidden;
+                                }
+
+                                .select1 select{
+                                    background: transparent;/*透明*/
+                                    border: none;
+                                    padding-left: 20px;
+                                    width: 140px;/*比上面设置的略宽*/
+                                    height: 100%;
+                                    border-radius: 10px;
+                                    color: black;
+                                    font-size: 16px;
+                                    font-family: "微软雅黑";
+                                }
+                            </style>
+                        </div>
+
+                        <div class="layui-card-body ">
+                            <table class="layui-table layui-form">
+                                <thead>
+                                    <tr>
+                                        <th>订单号</th>
+                                        <th>用户ID</th>
+                                        <th>订单价格</th>
+                                        <th>订单状态码</th>
+                                        <th>订单状态</th>
+                                        <th>产生积分</th>
+                                        <th>收货地址ID</th>
+                                        <th>收货人姓名</th>
+                                        <th>联系电话</th>
+                                        <th>详细地址</th>
+                                        <th>下单时间</th>
+                                        <th>查看订单商品</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contains">
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="layui-card-body ">
+                            <div class="layui-btn-group">
+                              <button type="button" id="pagefirst" class="layui-btn">首页</button>
+                              <button type="button" id="pagedown" class="layui-btn"><i class="layui-icon">&#xe603;</i>上一页</button>
+                              <button type="button" id="pageup" class="layui-btn">下一页 <i class="layui-icon">&#xe602;</i></button>
+                              <button id="pagelast" class="layui-btn">尾页</button>
+                            </div>    当前页码：
+                            <div class="layui-input-inline">
+                              <input style="text-align: center;width: 60px;" type="text" id="pages" class="layui-input">
+                            </div>
+                            <button type="button" id="pagego" class="layui-btn">跳转</button>
+                            <div class="layui-input-inline">
+                              <label id="pagesall" class="layui-form-label" style="width: 60px;"></label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+    </body>
+    <script type="text/javascript">
+        $("#pages").val(1);
+        getOrderPage();
+        //最后一页页码
+        var g_pageLast = 0;
+        //定义全局订单数组信息
+        var g_orderList = [];
+
+        
+
+        jQuery(document).ready(function(){
+            //订单模糊查询
+            $("#ordersearch").on("click",function(){
+              var t = encodeURI(encodeURI($("#field").val()));
+              xadmin.open('搜索到订单','order-search.html?field='+t);
+            });
+
+            $("#orderstatsearch").on("click",function(){
+              var m = encodeURI(encodeURI($("#selectOrder option:selected").val()));
+              xadmin.open('搜索到订单','order-search-status.html?orderstat='+m);
+            });
+
+            //跳转页面
+            $("#pagego").on("click",function(){
+              if ($("#pages").val()>g_pageLast||$("#pages").val()<1) {
+                alert("请输入正确页码");
+                return false;
+              }
+              getOrderPage();
+            })
+
+            //首页
+            $("#pagefirst").on("click",function(){
+              if ($("#pages").val()==1) {
+                alert("已经是第一页");
+              }
+              $("#pages").val(1);
+              getOrderPage();
+            });
+
+            //获取分页数
+            $.ajax({
+              type: "GET",
+              url: "http://localhost:8080/order/getOrderPages",
+              xhrFields:{withCredentials:true},
+              success: function(data){
+                if(data.status == "success"){
+                  g_pageLast = data.data;
+                  $("#pagesall").text("共"+data.data+"页");
+                }else{
+                  alert("获取分页数失败，原因为"+data.data.errMsg);
+                }
+              },
+              error: function(data){
+                alert("获取分页数失败，原因为"+data.responseText);
+              }
+            });
+
+            //尾页
+            $("#pagelast").on("click",function(){
+              if ($("#pages").val()==g_pageLast) {
+                alert("已经是最后一页");
+              }
+              $("#pages").val(g_pageLast);
+              getOrderPage();
+            });
+
+            //下一页
+            $("#pageup").on("click",function(){
+              var p = Number($("#pages").val())+1;
+              if (p>g_pageLast) {
+                alert("已经是最后一页");
+                return false;
+              }
+              $("#pages").val(p);  
+              getOrderPage();
+            })
+
+            //上一页
+            $("#pagedown").on("click",function(){
+              var p = Number($("#pages").val())-1;
+              if (p<1) {
+                alert("已经是第一页");
+                return false;
+              }
+              $("#pages").val(p);
+              getOrderPage();
+            });
+        });
+
+        function getOrderPage(){
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/order/listOrderPages",
+                data: {
+                    "page": $("#pages").val(),
+                },
+                xhrFields:{withCredentials:true},
+                success: function(data){
+                    if(data.status == "success"){
+                        g_orderList = data.data;
+                        reloadDom();
+                    }else{
+                        alert("获取订单信息失败，原因为"+data.data.errMsg);
+                    }
+                },
+                error: function(data){
+                    alert("获取订单信息失败，原因为"+data.responseText);
+                }
+            });
+        }
+
+        function reloadDom(){
+            $("#contains").html("");
+            for(var i=0;i<g_orderList.length;i++){
+                var orderVO = g_orderList[i];
+                var dom = "<tr data-id='"+orderVO.orderId+"' id='orderDetail"+orderVO.orderId+"'><td>"+orderVO.orderId+"</td><td>"+orderVO.userId+"</td><td>"+orderVO.orderPrice+"</td><td>"+orderVO.orderStatus+"</td><td>"+orderVO.statusName+"</td><td>"+orderVO.pointsNumber+"</td><td>"+orderVO.addressId+"</td><td>"+orderVO.recipientName+"</td><td>"+orderVO.recipientPhone+"</td><td>"+orderVO.addressDetail+"</td><td>"+orderVO.createTime+"</td><td><button class='layui-btn layui-btn-mini' data-id='"+orderVO.orderId+"' id='seeorderitem"+orderVO.orderId+"' type='submit'><i class='layui-icon'>&#xe60a;</i></button></td></tr>"
+                $("#contains").append($(dom));
+                $("#seeorderitem"+orderVO.orderId).on("click",function(){
+                    xadmin.open('订单商品','order-item.html?orderId='+$(this).data('id'));
+                });
+            }
+        }
+    </script>
+</html>
